@@ -1,0 +1,95 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Proyecto Web 2</title>
+     <link rel="stylesheet" type="text/css" href="/css/style.css">
+ </head>
+ 
+ <body>
+
+    <% if (message) { %>
+        <div class="alert">
+            <p><%= message %></p>
+            <button onclick="this.parentElement.style.display='none'">Close</button>
+        </div>
+    <% } %>
+    
+     <main class="table" id="customers_table">
+         <section class="table__header">
+             <h1>Customer's Order</h1>
+             <div class="input-group">
+                 <input type="search" placeholder="Search Data...">
+                 <img src="/images/search.png" alt="">
+             </div>
+
+
+             <div class="export__file">
+                <label for="add-order" class="export__add-btn" title="Add new order"></label>
+                <input type="checkbox" id="add-order">
+
+                 <label for="export-file" class="export__file-btn" title="Export File"></label>
+                 <input type="checkbox" id="export-file">
+                 <div class="export__file-options">
+                     <label>Export As &nbsp; &#10140;</label>
+                     <label for="export-file" id="toPDF">PDF <img src="/images/pdf.png" alt=""></label>
+                     <label for="export-file" id="toJSON">JSON <img src="/images/json.png" alt=""></label>
+                     <label for="export-file" id="toCSV">CSV <img src="/images/csv.png" alt=""></label>
+                     <label for="export-file" id="toEXCEL">EXCEL <img src="/images/excel.png" alt=""></label>
+                 </div>
+             </div>
+         </section>
+         <section class="table__body">
+             <table>
+                 <thead>
+                     <tr>
+                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Customer <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Location <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Order Date <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Amount <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Phone <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Notes <span class="icon-arrow">&UpArrow;</span></th>
+                         <th></th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                    
+                    <!-- Mostrar usuarios -->
+                    <% orders.forEach(order => { %>
+                    <tr>
+                        <td> <%= order.id %> </td> <!-- Location --> 
+                        <td> <img src="<%= order.photo_url %>" alt=""><%= order.name %></td> <!-- Photo and name -->
+                        <td> <%= order.location %> </td> <!-- Location --> 
+                        <td> <%= new Date(order.order_date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                        </td> <!-- Date -->
+                        <td>
+                            <p class="status <%= order.status.toLowerCase() %>"><%= order.status %></p> <!-- Status -->
+                        </td>
+                        <td> <strong> $<%= order.amount %> </strong></td> <!-- Amount -->
+                        <td> <%= order.email %> </td> <!-- Email -->
+                        <td> <%= order.phone %> </td> <!-- Phone -->
+                        <td> <%= order.notes %></td> <!-- notes -->
+                        <td>
+                            <a href="/find/<%= order.id %>">Edit</a> |
+                            <a href="/delete/<%= order.id %>">Delete</a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                    
+                 </tbody>
+             </table>
+         </section>
+     </main>
+
+     <script src="/js/script.js"></script>
+ 
+ </body>
+ 
+ </html>
+ 

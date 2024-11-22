@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Web 2</title>
+    <link rel="stylesheet" href="/css/login-register.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <form action="/add" method="post">
+            <h1>Register</h1>
+            <div class="input-box">
+                <input type="text" name="customer" placeholder="Customer" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="text" name="location" placeholder="Location" required>
+                <i class='bx bxs-map'></i>
+            </div>
+
+            <label for="date">
+                <div class="input-box">
+                        <input id="date" type="date" name="date" placeholder="Date" required>
+                        <i class='bx bxs-calendar-alt' ></i>
+                </div>
+            </label>
+
+            <div class="input-box">
+                <input type="number" name="amount" placeholder="Amount" required>
+                <i class='bx bx-money-withdraw'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Email" required>
+                <i class='bx bxs-envelope' ></i>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="phone" placeholder="Phone" required>
+                <i class='bx bxs-phone'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="notes" placeholder="Notes" required>
+                <i class='bx bxs-cheese'></i>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" type="submit">Submit</button>
+                <button class="btn" type="button" id="cancel-btn">Cancel</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('cancel-btn').addEventListener("click", () => {
+            window.location.href = "/"; 
+        });
+    </script>
+</body>
+</html>
