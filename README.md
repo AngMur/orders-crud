@@ -1,3 +1,3 @@
 # orders-crud
 
-![Screenshot](./public/images/ss.png)
+![Screenshot](./public/images/ScreenShoot.png)
